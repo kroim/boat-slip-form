@@ -13,6 +13,21 @@ class MainModel
         $this->conn = $db->connection();
     }
 
+    public function getYears()
+    {
+        $sql = "select * from years";
+        $select = mysqli_query($this->conn, $sql);
+        $res = $select->fetch_all(MYSQLI_ASSOC);
+        if (count($res)) return $res;
+        else {
+            $create_sql = "insert into years (year) values (2021)";
+            mysqli_query($this->conn, $create_sql);
+            $select = mysqli_query($this->conn, $sql);
+            $res = $select->fetch_all(MYSQLI_ASSOC);
+            return $res;
+        }
+    }
+
     public function getCosts()
     {
         $sql = "select * from costs";

@@ -32,7 +32,7 @@ class MainController
         $sidebar = new stdClass();
         $sidebar->menu = "dashboard";
         $sidebar->sub_menu = "";
-        $tests = array();
+        $years = $this->mainModel->getYears();
         require_once __DIR__ . '/../views/main/home.php';
     }
 
@@ -43,6 +43,7 @@ class MainController
         $sidebar->menu = "costs";
         $sidebar->sub_menu = "";
         $costs = $this->mainModel->getCosts();
+        $years = $this->mainModel->getYears();
         require_once __DIR__ . "/../views/main/costs.php";
         die();
     }
