@@ -19,4 +19,10 @@ class MainModel
         $select = mysqli_query($this->conn, $sql);
         return $select->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function updateCost($id, $name, $cost)
+    {
+        $sql = "update costs set cost=" . $cost . " where id=" . $id;
+        return mysqli_query($this->conn, $sql);
+    }
 }

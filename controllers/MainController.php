@@ -47,14 +47,14 @@ class MainController
         die();
     }
 
-    public function postManageRole($request)
+    public function postManageCosts($request)
     {
-        $user_id = $request['user_id'];
-        $user_role = $request['user_role'];
-        $role_number = 3;
-        if ($user_role == 'Teacher') $role_number = 2;
-        $this->mainModel->updateUser($user_id, null, null, null, $role_number, null, null);
-        echo json_encode(["status" => "success", "message" => "Updated user role"]);
+        $cost_id = $request['id'];
+        $cost_name = $request['name'];
+        $cost_value = $request['cost'];
+        $query_res = $this->mainModel->updateCost($cost_id, $cost_name, $cost_value);
+        if ($query_res) echo json_encode(["status" => "success", "message" => "Updated a cost item successfully"]);
+        else echo json_encode(["status" => "error", "message" => "Failed updating a cost item"]);
         die();
     }
 

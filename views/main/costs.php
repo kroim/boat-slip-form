@@ -64,7 +64,7 @@ include(PREPEND_PATH . "views/partials/header.php");
                     </div>
                     <div class="form-group">
                         <label>Cost</label>
-                        <input type="number" class="form-control" id="modal_edit_cost_value" required>
+                        <input type="number" class="form-control" id="modal_edit_cost_value" step="0.01" required>
                     </div>
                     <div class="form-group text-center">
                         <button type="submit" class="btn btn-link">Save changes</button>
@@ -91,6 +91,36 @@ include(PREPEND_PATH . "views/partials/header.php");
         });
         base_url = $('meta[name="_base_url"]').attr('content');
     });
+    function editCost(id) {
+        let name = $('#cost_' + id + ' .cost-name').text();
+        let cost = $('#cost_' + id + ' .cost-value').text();
+        $('#modal_edit_cost_id').val(id);
+        $('#modal_edit_cost_name').val(name);
+        $('#modal_edit_cost_value').val(cost);
+        $('#modal_edit_cost').modal();
+    }
+    $('#modal-edit-cost-form').on('submit', function (e) {
+        e.preventDefault();
+        let data = {
+            id: $('#modal_edit_cost_id').val(),
+            name: $('#modal_edit_cost_name').val(),
+            cost: $('#modal_edit_cost_value').val()
+        };
+        $.ajax({
+            url: base_url + '/costs',
+            method: 'post',
+            data: data,
+            success: function (res) {
+                res = JSON.parse(res);
+                if (res.status === "success") {
+                    customAlert(res.message, true);
+                    setTimeout(function () {
+                        location.reload()
+                    }, 2000)
+                } else customAlert(res.message);
+            }
+        })
+    })
 </script>
 
 </body>

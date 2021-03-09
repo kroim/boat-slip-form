@@ -28,7 +28,7 @@ class Routes
             $this->main->manageCosts();
         });
         $this->route->post("/costs", function () {
-            $this->main->postManageRole($_REQUEST);
+            $this->main->postManageCosts($_REQUEST);
         });
     }
 }
