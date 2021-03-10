@@ -15,7 +15,7 @@ include(PREPEND_PATH . "views/partials/header.php");
 <section class="content">
     <div class="content__inner">
         <header class="content__title">
-            <h1>All Costs</h1>
+            <h1>COST PER RT</h1>
         </header>
         <div class="card">
             <div class="card-body">

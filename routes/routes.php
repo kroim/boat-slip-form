@@ -30,5 +30,20 @@ class Routes
         $this->route->post("/costs", function () {
             $this->main->postManageCosts($_REQUEST);
         });
+        $this->route->get("/manage-years", function () {
+            $this->main->manageYears();
+        });
+        $this->route->post("/manage-years", function () {
+            $this->main->postManageYears($_REQUEST);
+        });
+        $this->route->get("/slip-data", function () {
+            $this->main->manageSlipData($_REQUEST);
+        });
+        $this->route->post("/get-slip-item-by-id", function () {
+            $this->main->getSlipItemById($_REQUEST);
+        });
+        $this->route->post("/save-slip-data", function () {
+            $this->main->saveSlipData($_REQUEST);
+        });
     }
 }
