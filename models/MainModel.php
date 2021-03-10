@@ -101,7 +101,6 @@ class MainModel
             . $slip_data->slip_tax . ", " . $slip_data->total_winter_storage . ", " . $slip_data->shrink_wrap_price . ", '"
             . $slip_data->zipper_door . "', '" . $slip_data->flybridge . "', '" . $slip_data->mast_up . "', '"
             . $slip_data->total_shrink_wrap . "', " . $slip_data->payment . ", '" . $created_at . "')";
-        print_r($sql);
         return mysqli_query($this->conn, $sql);
     }
 
